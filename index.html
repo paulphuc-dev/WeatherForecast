@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự báo thời tiết</title>
+    <link rel="stylesheet" href="./style.css"/>
+    <link rel="stylesheet" href="./chart.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" />
+</head>
+<body>
+    <div class="app">
+    <div class="topbar">
+        <div class="logo">Dự báo thời tiết thông minh</div>
+
+        <div class="search-box">
+        <input type="text" id="cityInput" placeholder="Nhập thành phố...">
+        <button id="search">
+            <span class="material-icons"><i class="fa-solid fa-magnifying-glass"></i></span>
+        </button>
+        </div>
+    </div>
+
+    <!-- HERO -->
+    <div class="hero">
+        <div class="hero-left">
+        <h1 id="temp">--°C</h1>
+        <h2 id="city">Đang tải...</h2>
+        <p id="condition">---</p>
+        </div>
+
+        <div class="hero-right">
+        <img id="weatherIcon" class="weather-icon" src="" alt="">
+        </div>
+    </div>
+
+    <div class="grid">
+
+        <!-- LEFT -->
+        <div>
+
+            <!-- WEATHER DETAILS -->
+            <div class="card">
+                <div class="card-title">
+                <span class="material-icons"></span>
+                <i class="fa-solid fa-circle-info"></i>
+                Chi tiết thời tiết
+                </div>
+
+                <div class="details">
+                <div class="detail-item">
+                    <h4>Độ ẩm</h4>
+                    <p id="humidity">--%</p>
+                </div>
+
+                <div class="detail-item">
+                    <h4>Tốc độ gió</h4>
+                    <p id="wind">-- km/h</p>
+                </div>
+
+                <div class="detail-item">
+                    <h4>Nhiệt độ</h4>
+                    <p id="feels">--°C</p>
+                </div>
+
+                <div class="detail-item">
+                    <h4>Áp suất</h4>
+                    <p id="pressure">-- hPa</p>
+                </div>
+                </div>
+            </div>
+
+            <!-- FORECAST -->
+            <div class="card" style="margin-top:20px;">
+                <div class="card-title">
+                <span class="material-icons"></span>
+                Dự báo 7 ngày tiếp
+                </div>
+
+                <div class="forecast" id="forecast"></div>
+            </div>
+
+            <div class="card" style="margin-top:20px;">
+                <div class="card-title">
+                    <span class="material-icons"></span>
+                    Phân tích thời tiết & AQI
+                </div>
+
+                <div class="charts-grid">
+
+                    <div class="chart-box">
+                    <h3>Nhiệt độ 7 ngày</h3>
+                    <canvas id="tempChart"></canvas>
+                    </div>
+
+                    <div class="chart-box">
+                    <h3>Chất lượng không khí</h3>
+                    <canvas id="aqiChart"></canvas>
+                    </div>
+
+                    <div class="chart-box full">
+                    <h3>Phân lớp thời tiết</h3>
+                    <canvas id="weatherPie"></canvas>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        <!-- RIGHT -->
+        <div>
+            <!-- AQI -->
+            <div class="card">
+                <div class="card-title">
+                <span class="material-icons"></span>
+                <i class="fa-solid fa-wind"></i>
+                Chất lượng không khí
+                </div>
+
+                <div class="aqi-box">
+                <div class="aqi-value" id="aqiValue">--</div>
+
+                <div class="aqi-status" id="aqiStatus">
+                    Đang tải
+                </div>
+                </div>
+            </div>
+
+            <!-- UV INDEX CARD -->
+            <div class="card" style="margin-top:20px;">
+
+                <div class="card-title">
+                    <span class="material-icons"></span>
+                    <i class="fa-solid fa-sun"></i>
+                    Chỉ số tia UV
+                </div>
+
+                <div class="uv-container">
+
+                    <div class="uv-main">
+
+                        <div class="uv-circle" id="uvCircle">
+                            <span id="uvValue">--</span>
+                        </div>
+
+                        <div class="uv-info">
+                            <h2 id="uvLevel">Đang tải</h2>
+                            <p id="uvDesc">
+                                Đang cập nhật dữ liệu tia UV...
+                            </p>
+                        </div>
+
+                    </div>
+
+                    <div class="uv-scale">
+
+                        <div class="uv-item good">
+                            <span></span>
+                            <p>Thấp (0 - 2)</p>
+                        </div>
+
+                        <div class="uv-item medium">
+                            <span></span>
+                            <p>Trung bình (3 - 5)</p>
+                        </div>
+
+                        <div class="uv-item high">
+                            <span></span>
+                            <p>Cao (6 - 7)</p>
+                        </div>
+
+                        <div class="uv-item extreme">
+                            <span></span>
+                            <p>Rất cao (8+)</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- TIPS -->
+            <div class="card" style="margin-top:20px;">
+                <div class="card-title">
+                <span class="material-icons"></span>
+                <i class="fa-solid fa-lightbulb"></i>
+                Gợi ý mang theo
+                </div>
+
+                <div class="tips" id="tips"></div>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        Được thiết kế bởi đội 1 lớp 7A1
+    </footer>
+
+    </div>
+    <script src="./script.js"></script>
+    <script src="./chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</body>
+</html>

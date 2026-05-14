@@ -1,0 +1,462 @@
+/* =========================
+   MATERIAL ANALYTICS UI
+========================= */
+
+.charts-grid{
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:24px;
+  margin-top:10px;
+}
+
+/* CARD */
+.chart-box{
+  position:relative;
+  background:#ffffff;
+  border-radius:28px;
+  padding:26px;
+  border:1px solid #e7edf5;
+
+  box-shadow:
+    0 4px 20px rgba(15,23,42,.04),
+    0 1px 3px rgba(15,23,42,.05);
+
+  transition:.3s ease;
+  overflow:hidden;
+}
+
+.chart-box:hover{
+  transform:translateY(-3px);
+
+  box-shadow:
+    0 12px 32px rgba(15,23,42,.08),
+    0 2px 8px rgba(15,23,42,.06);
+}
+
+/* FULL WIDTH */
+.chart-box.full{
+  grid-column:1/3;
+}
+
+/* HEADER */
+.chart-box h3{
+  display:flex;
+  align-items:center;
+  gap:12px;
+
+  margin-bottom:24px;
+
+  font-size:24px;
+  font-weight:700;
+  color:#0f172a;
+
+  letter-spacing:-0.3px;
+}
+
+/* DIFFERENT ICON COLORS */
+.chart-box:nth-child(1) h3::before{
+  background:
+    linear-gradient(
+      135deg,
+      #dbeafe,
+      #93c5fd
+    );
+}
+
+.chart-box:nth-child(2) h3::before{
+  background:
+    linear-gradient(
+      135deg,
+      #dbeafe,
+      #bfdbfe
+    );
+}
+
+.chart-box.full h3::before{
+  background:
+    linear-gradient(
+      135deg,
+      #dbeafe,
+      #bfdbfe
+    );
+}
+
+/* CANVAS */
+canvas{
+  width:100% !important;
+
+  height:340px !important;
+
+  max-height:340px;
+
+  padding:8px;
+}
+
+/* PIE / DOUGHNUT FIX */
+.chart-box.full canvas{
+  height:420px !important;
+  max-height:420px;
+}
+
+/* CHART LEGEND STYLE */
+.chart-legend{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:28px;
+
+  margin-top:18px;
+  flex-wrap:wrap;
+}
+
+.chart-legend .item{
+  display:flex;
+  align-items:center;
+  gap:10px;
+
+  font-size:15px;
+  font-weight:500;
+  color:#475569;
+}
+
+.chart-legend .dot{
+  width:14px;
+  height:14px;
+  border-radius:50%;
+}
+
+/* COLORS */
+
+.dot.good{
+  background:#22c55e;
+  box-shadow:0 0 10px rgba(34,197,94,.4);
+}
+
+.dot.medium{
+  background:#facc15;
+  box-shadow:0 0 10px rgba(250,204,21,.4);
+}
+
+.dot.bad{
+  background:#ef4444;
+  box-shadow:0 0 10px rgba(239,68,68,.4);
+}
+
+/* AQI INFO PANEL */
+.aqi-info{
+  margin-top:18px;
+
+  padding:16px 18px;
+
+  border-radius:18px;
+
+  background:
+    linear-gradient(
+      135deg,
+      rgba(255,248,220,.9),
+      rgba(255,244,214,.9)
+    );
+
+  border:1px solid #fde68a;
+
+  display:flex;
+  align-items:center;
+  gap:14px;
+
+  color:#92400e;
+
+  font-size:15px;
+  line-height:1.6;
+}
+
+/* WEATHER SUMMARY */
+.weather-summary{
+  margin-top:24px;
+
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+
+  gap:18px;
+}
+
+.weather-card{
+  background:#fff;
+  border-radius:24px;
+  padding:22px;
+
+  border:1px solid #edf2f7;
+
+  box-shadow:
+    0 2px 10px rgba(0,0,0,.03);
+
+  transition:.3s;
+}
+
+.weather-card:hover{
+  transform:translateY(-2px);
+}
+
+.weather-card.good{
+  border-bottom:4px solid #22c55e;
+}
+
+.weather-card.medium{
+  border-bottom:4px solid #facc15;
+}
+
+.weather-card.bad{
+  border-bottom:4px solid #ef4444;
+}
+
+.weather-card h4{
+  font-size:18px;
+  margin-bottom:10px;
+  font-weight:700;
+}
+
+.weather-card p{
+  color:#64748b;
+  line-height:1.6;
+}
+
+/* RESPONSIVE */
+@media(max-width:1100px){
+
+  .charts-grid{
+    grid-template-columns:1fr;
+  }
+
+  .chart-box.full{
+    grid-column:auto;
+  }
+
+  .weather-summary{
+    grid-template-columns:1fr;
+  }
+
+}
+
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+
+@media(max-width:992px){
+
+  .charts-grid{
+    grid-template-columns:1fr;
+    gap:20px;
+  }
+
+  .chart-box.full{
+    grid-column:auto;
+  }
+
+  .weather-summary{
+    grid-template-columns:1fr;
+  }
+
+}
+
+/* =========================
+   TABLET
+========================= */
+
+@media(max-width:768px){
+
+  .charts-grid{
+    gap:18px;
+  }
+
+  .chart-box{
+    padding:18px;
+    border-radius:22px;
+  }
+
+  .chart-box h3{
+    font-size:20px;
+    margin-bottom:18px;
+  }
+
+  .chart-box h3::before{
+    width:42px;
+    height:42px;
+  }
+
+  canvas{
+    width:100% !important;
+    height:260px !important;
+    max-height:260px !important;
+    padding:0;
+  }
+
+  .chart-box.full canvas{
+    height:300px !important;
+    max-height:300px !important;
+  }
+
+  .chart-legend{
+    gap:16px;
+    justify-content:flex-start;
+  }
+
+  .chart-legend .item{
+    font-size:14px;
+  }
+
+  .aqi-info{
+    padding:14px;
+    font-size:14px;
+    border-radius:16px;
+  }
+
+  .weather-summary{
+    gap:14px;
+  }
+
+  .weather-card{
+    padding:18px;
+    border-radius:20px;
+  }
+
+  .weather-card h4{
+    font-size:17px;
+  }
+
+  .weather-card p{
+    font-size:14px;
+  }
+
+}
+
+/* =========================
+   MOBILE
+========================= */
+
+@media(max-width:576px){
+
+  .charts-grid{
+    grid-template-columns:1fr;
+    gap:16px;
+    margin-top:0;
+  }
+
+  .chart-box{
+    padding:16px;
+    border-radius:20px;
+
+    box-shadow:
+      0 2px 10px rgba(15,23,42,.05),
+      0 1px 2px rgba(15,23,42,.04);
+  }
+
+  .chart-box:hover{
+    transform:none;
+  }
+
+  .chart-box h3{
+    font-size:17px;
+    line-height:1.4;
+    gap:10px;
+    margin-bottom:16px;
+  }
+
+  .chart-box h3::before{
+    width:36px;
+    height:36px;
+    min-width:36px;
+  }
+
+  canvas{
+    width:100% !important;
+    height:220px !important;
+    max-height:220px !important;
+  }
+
+  .chart-box.full canvas{
+    height:260px !important;
+    max-height:260px !important;
+  }
+
+  .chart-legend{
+    gap:12px;
+    margin-top:14px;
+    justify-content:center;
+  }
+
+  .chart-legend .item{
+    font-size:13px;
+    gap:8px;
+  }
+
+  .chart-legend .dot{
+    width:12px;
+    height:12px;
+  }
+
+  .aqi-info{
+    margin-top:14px;
+    padding:12px;
+    border-radius:14px;
+    font-size:13px;
+    line-height:1.5;
+  }
+
+  .weather-summary{
+    grid-template-columns:1fr;
+    gap:12px;
+    margin-top:18px;
+  }
+
+  .weather-card{
+    padding:16px;
+    border-radius:18px;
+  }
+
+  .weather-card h4{
+    font-size:16px;
+    margin-bottom:8px;
+  }
+
+  .weather-card p{
+    font-size:13px;
+    line-height:1.5;
+  }
+
+}
+
+/* =========================
+   SMALL MOBILE
+========================= */
+
+@media(max-width:380px){
+
+  .chart-box{
+    padding:14px;
+  }
+
+  .chart-box h3{
+    font-size:16px;
+  }
+
+  .chart-box h3::before{
+    width:32px;
+    height:32px;
+  }
+
+  canvas{
+    height:200px !important;
+    max-height:200px !important;
+  }
+
+  .chart-box.full canvas{
+    height:230px !important;
+    max-height:230px !important;
+  }
+
+  .chart-legend{
+    flex-direction:column;
+    align-items:flex-start;
+    gap:8px;
+  }
+
+}
